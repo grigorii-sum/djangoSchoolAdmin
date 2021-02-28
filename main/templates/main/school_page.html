@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% if study_groups %}
+        {% for element in study_groups %}
+            <a href="/group/{{ element.id }}">
+                <div class="alert alert-primary mt-2">
+                    <h2>{{ element.name }}</h2>
+                </div>
+            </a>
+        {% endfor %}
+    {% else %}
+        <p>В этой школе пока нет ни одной учебной группы!</p>
+    {% endif %}
+    <a class="btn btn-outline-primary" href="{% url 'createGroup' %}">добавить учебную группу</a>
+    <br><br><br>
+{% endblock %}

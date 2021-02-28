@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% if students %}
+        {% for element in students %}
+            <div class="alert alert-primary mt-2">
+                <h2>{{ element.surname }} {{ element.name }} {{ element.patronymic }}</h2>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>В этой учебной группе пока нет ни одного ученика!</p>
+    {% endif %}
+    <a class="btn btn-outline-primary" href="/create-student/{{ group_id }}">добавить ученика</a>
+    <br><br><br>
+{% endblock %}
